@@ -69,7 +69,7 @@ class SimSiamDataset(Dataset):
     def __len__(self) -> int:
         return len(self.files)
     
-    def __getitem__(self, i) -> Tuple[Tensor, Tensor]:
+    def __getitem__(self, i: int) -> Tuple[Tensor, Tensor]:
         file = self.files[i]
         img = Image.open(file)
 
