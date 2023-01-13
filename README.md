@@ -1,3 +1,5 @@
+<i>This is not a fork of somebody else's code. I, [@BobMcDear](https://github.com/BobMcDear), am the original creator of this project but due to problems with Git was forced to delete and restore it. In other words, [gary109/PyTorch-SimSiam](https://github.com/gary109/PyTorch-SimSiam) is a fork of this repository and not vice versa.</i>
+
 # SimSiam in PyTorch
 This is an implementation of the self-supervised learning algorithm SimSiam in PyTorch. You can find the accompanying blog [here](https://medium.datadriveninvestor.com/simsiam-in-pytorch-part-1-the-data-ecbe2234c1a).
 
