@@ -1,5 +1,3 @@
-<i>This is not a fork of somebody else's code. I, [@BobMcDear](https://github.com/BobMcDear), am the original creator of this project but due to problems with Git was forced to delete and restore it. In other words, [gary109/PyTorch-SimSiam](https://github.com/gary109/PyTorch-SimSiam) is a fork of this repository and not vice versa.</i>
-
 # SimSiam in PyTorch
 This is an implementation of the self-supervised learning algorithm SimSiam in PyTorch.
 
@@ -39,7 +37,7 @@ Methods:
   * ```get_encoder_out_dim```: Returns the number of output channels of an encoder
     * Args:
       * ```encoder``` (```Module```): Encoder
-  
+
   * ```LinBnReLU```: Linear layer followed optionally by batch normalization and ReLU
     * Args:
       * ```in_dim``` (```int```): Number of input features
@@ -51,26 +49,26 @@ Methods:
       * ```encoder``` (```Module```): Encoder
       * ```out_dim``` (```int```): Number of output features for projection and prediction heads. Default is ```2048```
       * ```prediction_head_hidden_dim``` (```int```): Number of hidden features of prediction head. Default is ```512```
- 
- 
+
+
 * ```train.py```
   * ```get_normalized_std```: Normalizes ```z``` on a per-row basis, gets the standard deviation of the result on a per-row basis, and returns the average of all rows
     * Args:
       * ```z``` (```Tensor```): ```Tensor```
-  
+
   * ```do_training_epoch```: Does one training epoch for a SimSiam model with a provided ```DataLoader``` and returns the loss and the mean normalized standard deviation of projected ```z```s (the latter is useful for monitoring model collapse)
     * Args:
       * ```dataloader``` (```DataLoader```): ```DataLoader``` for training
       * ```model``` (```Module```): SimSiam model
       * ```loss_func``` (```SymmetrizedNegativeCosineSimilarity```): ```SymmetrizedNegativeCosineSimilarity``` object
       * ```optimizer``` (```Optimizer```): ```Optimizer``` for optimization
-  
+
   * ```do_validation```: Validates a SimSiam model with a provided ```DataLoader``` and returns the loss and the mean normalized standard deviation of projected ```z```s (the latter is useful for monitoring model collapse)
     * Args:
       * ```dataloader``` (```DataLoader```): ```DataLoader``` for validation
       * ```model``` (```Module```): SimSiam model
       * ```loss_func``` (```SymmetrizedNegativeCosineSimilarity```): ```SymmetrizedNegativeCosineSimilarity``` object
-  
+
   * ```train```: Trains and validates a SimSiam model and prints loss and standard deviations
     * Args:
       * ```train_dataloader``` (```DataLoader```): ```DataLoader``` for training
@@ -98,7 +96,7 @@ encoder = resnet50()
 encoder.fc = Identity()
 
 model = SimSiamModel(encoder=encoder,
-                     out_dim=2048, 
+                     out_dim=2048,
                      prediction_head_hidden_dim=512)
 
 optimizer = Adam(params=model.parameters(),
@@ -108,13 +106,13 @@ train_dataloader = create_simsiam_dataloader(path='train/',
                                              valid_exts=['jpeg', 'jpg'],
                                              size=224,
                                              normalize=True,
-                                             batch_size=32, 
+                                             batch_size=32,
                                              num_workers=8)
 valid_dataloader = create_simsiam_dataloader(path='valid/',
                                              valid_exts=['jpeg', 'jpg'],
                                              size=224,
                                              normalize=True,
-                                             batch_size=32, 
+                                             batch_size=32,
                                              num_workers=8)
 
 train(train_dataloader=train_dataloader,
